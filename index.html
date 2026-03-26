@@ -1,1 +1,42 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM manipuliacija</title>
+</head>
+<body>
 
+    <h1>Užduotis DOM manipuliacija</h1>
+    <button id="keisti">Keisti</button>
+    <p id="tekstas">Senasis tekstas</p>
+    <ul id="sarasas"></ul>
+    <input type="text" id="ivestis" placeholder="Įrašykite tekstą">
+    <button id="atkurti">Atkurti</button>
+
+    <script>
+        const mygtukasKeisti = document.getElementById("keisti");
+        const tekstas = document.getElementById("tekstas");
+        const sarasas = document.getElementById("sarasas");
+        const ivestis = document.getElementById("ivestis");
+        const mygtukasAtkurti = document.getElementById("atkurti");
+
+        mygtukasKeisti.addEventListener("click", function() {
+            tekstas.textContent = "DOM manipuliacija pavyko!";
+            mygtukasKeisti.style.backgroundColor = "green";
+            if (ivestis.value.trim() !== "") {
+                let naujasElementas = document.createElement("li");
+                naujasElementas.textContent = ivestis.value;
+                sarasas.appendChild(naujasElementas);
+                ivestis.value = "";
+            }
+        });
+
+        mygtukasAtkurti.addEventListener("click", function() {
+            tekstas.textContent = "Senasis tekstas";
+            mygtukasKeisti.style.backgroundColor = "";
+            sarasas.innerHTML = "";
+        });
+    </script>
+
+</body>
+</html>
